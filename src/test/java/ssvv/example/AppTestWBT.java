@@ -24,7 +24,6 @@ import java.io.IOException;  // Import the IOException class to handle errors
  */
 public class AppTestWBT
 {
-    private static final String IntMaxValuePlusOne = "2147483648";
     private Service service;
 
     private void initXMLFile(String name) {
@@ -78,7 +77,7 @@ public class AppTestWBT
         assertEquals(0, service.findAllTeme().spliterator().getExactSizeIfKnown());
 
         try{
-            service.saveTema("10", "", 8, 3);
+            service.saveTema("99", "", 8, 3);
         }
         catch (ValidationException e) {
             assertEquals("Descriere nula! \n", e.getMessage());
@@ -90,7 +89,7 @@ public class AppTestWBT
     public void test_null_description_addAssignment() {
         assertEquals(0, service.findAllTeme().spliterator().getExactSizeIfKnown());
         try{
-            service.saveTema("10", null, 8, 3);
+            service.saveTema("99", null, 8, 3);
         }
         catch (ValidationException e) {
             assertEquals("Descriere invalida! \n", e.getMessage());
