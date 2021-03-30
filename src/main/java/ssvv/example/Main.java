@@ -1,0 +1,36 @@
+
+
+import ssvv.example.console.*;
+import ssvv.example.domain.*;
+import ssvv.example.repository.*;
+import ssvv.example.service.*;
+import ssvv.example.validation.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+        UI consola = new UI(service);
+
+        //public int saveStudent(String id, String nume, int grupa)
+        Student s1 = new Student("234","Test1",356);
+        service.saveStudent("234","Test1",346);
+        //public int saveTema(String id, String descriere, int deadline, int startline) {
+        service.saveTema("17","TemaTest",12,1);
+        service.saveNota("234","17",7,15,"Foarte bineTest");
+
+        consola.run();
+
+        //PENTRU GUI
+        // de avut un check: daca profesorul introduce sau nu saptamana la timp
+        // daca se introduce nota la timp, se preia saptamana din sistem
+        // altfel, se introduce de la tastatura
+    }
+}
