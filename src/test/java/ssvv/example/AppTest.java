@@ -94,7 +94,7 @@ public class AppTest
     }
     //LOWER BOUND */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
     @Test
-    public void test_addStudent_belowLowerBound() {
+    public void test_addStudent_id_belowLowerBound() {
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
 
         try{
@@ -107,34 +107,34 @@ public class AppTest
     }
 
     @Test
-    public void test_addStudent_equalLowerBound() {
+    public void test_addStudent_id_equalLowerBound() {
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
         service.saveStudent("0", "Tudor", 666);
         assertEquals(1, service.findAllStudents().spliterator().getExactSizeIfKnown());
     }
 
     @Test
-    public void test_addStudent_aboveLowerBound() {
+    public void test_addStudent_id_aboveLowerBound() {
         service.saveStudent("1", "Tudor", 666);
         assertEquals(1, service.findAllStudents().spliterator().getExactSizeIfKnown());
     }
 
     //UPPER BOUND */*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
     @Test
-    public void test_addStudent_belowUpperBound() {
+    public void test_addStudent_id_belowUpperBound() {
         service.saveStudent(String.valueOf(Integer.MAX_VALUE - 1), "Tudor", 666);
         assertEquals(1, service.findAllStudents().spliterator().getExactSizeIfKnown());
     }
 
     @Test
-    public void test_addStudent_equalUpperBound() {
+    public void test_addStudent_id_equalUpperBound() {
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
         service.saveStudent(String.valueOf(Integer.MAX_VALUE), "Tudor", 666);
         assertEquals(1, service.findAllStudents().spliterator().getExactSizeIfKnown());
     }
 
     @Test
-    public void test_addStudent_aboveUpperBound() {
+    public void test_addStudent_id_aboveUpperBound() {
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
 
         try{
