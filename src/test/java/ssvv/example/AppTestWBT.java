@@ -26,20 +26,20 @@ public class AppTestWBT
 {
     private Service service;
 
-    private void initXMLFile(String name) {
+    private void initializeFile(String name) {
         try {
-            File myObj = new File(name);
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
+            File newFile = new File(name);
+            if (newFile.createNewFile()) {
+                System.out.println("File created: " + newFile.getName());
             } else {
                 System.out.println("File already exists.");
             }
-            FileWriter myWriter = new FileWriter(name);
-            myWriter.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
+            FileWriter fileWriter = new FileWriter(name);
+            fileWriter.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
                     "<Entitati>\n" +
                     "\n" +
                     "</Entitati>\n");
-            myWriter.close();
+            fileWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -52,9 +52,9 @@ public class AppTestWBT
         Validator<Student> studentValidator = new StudentValidator();
         Validator<Tema> temaValidator = new TemaValidator();
         Validator<Nota> notaValidator = new NotaValidator();
-        initXMLFile("studenti_test.xml");
-        initXMLFile("teme_test.xml");
-        initXMLFile("note_test.xml");
+        initializeFile("studenti_test.xml");
+        initializeFile("teme_test.xml");
+        initializeFile("note_test.xml");
         StudentXMLRepository studentRepo = new StudentXMLRepository(studentValidator, "studenti_test.xml");
         TemaXMLRepository temeRepo = new TemaXMLRepository(temaValidator, "teme_test.xml");
         NotaXMLRepository noteRepo = new NotaXMLRepository(notaValidator, "note_test.xml");
