@@ -17,7 +17,7 @@ public class StudentValidator implements Validator<Student> {
             if (id < 0) throw new Exception();
         }
         catch (Exception e) {
-            throw new ValidationException("Id trebuie sa fie un integer pozitiv\n");
+            throw new ValidationException("Id incorect\n");
         }
     }
 }

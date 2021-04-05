@@ -1,27 +1,20 @@
 package ssvv.example;
-
 import static org.junit.Assert.assertEquals;
-
 import domain.Nota;
 import domain.Student;
 import domain.Tema;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import repository.NotaXMLRepository;
 import repository.StudentXMLRepository;
 import repository.TemaXMLRepository;
 import service.Service;
 import validation.*;
 
-import java.io.File;  // Import the File class
-import java.io.FileWriter;
-import java.io.IOException;  // Import the IOException class to handle errors
-
-
-/**
- * Unit test for simple App.
- */
 public class AppTestWBT
 {
     private Service service;

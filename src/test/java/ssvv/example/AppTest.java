@@ -101,7 +101,7 @@ public class AppTest
             service.saveStudent("-1", "Tudor", 666);
         }
         catch (ValidationException e) {
-            assertEquals("Id trebuie sa fie un integer pozitiv\n", e.getMessage());
+            assertEquals("Id incorect\n", e.getMessage());
         }
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
     }
@@ -141,7 +141,7 @@ public class AppTest
             service.saveStudent(MAXINT, "Tudor", 666);
         }
         catch (ValidationException e) {
-            assertEquals("Id trebuie sa fie un integer pozitiv\n", e.getMessage());
+            assertEquals("Id incorect\n", e.getMessage());
         }
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
     }
