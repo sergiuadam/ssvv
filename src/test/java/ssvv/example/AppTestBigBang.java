@@ -94,9 +94,6 @@ public class AppTestBigBang {
     @Test
     public void test_addGrade_nota_belowLowerBound() {
         assertEquals(0, service.findAllNote().spliterator().getExactSizeIfKnown());
-        service.saveStudent("1", "Sergiu", 666);
-        service.saveTema("1", "oTema", 5, 1);
-
         try {
             service.saveNota("1", "1", -1, 5, "none");
         }
@@ -108,8 +105,16 @@ public class AppTestBigBang {
 
     @Test
     public void test_bigBang_Combined() {
-        test_null_description_addAssignment();
-        test_addStudent_null_id();
-        test_addGrade_nota_belowLowerBound();
+        assertEquals(0, service.findAllNote().spliterator().getExactSizeIfKnown());
+        service.saveStudent("1", "Sergiu", 666);
+        service.saveTema("1", "oTema", 5, 1);
+
+        try {
+            service.saveNota("1", "1", -1, 5, "none");
+        }
+        catch (ValidationException e) {
+            assertEquals("Nota invalida! \n", e.getMessage());
+        }
+        assertEquals(0, service.findAllNote().spliterator().getExactSizeIfKnown());
     }
 }
