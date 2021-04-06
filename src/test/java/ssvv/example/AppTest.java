@@ -190,7 +190,7 @@ public class AppTest
     public void test_addStudent_group_aboveUpperBound() {
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
         try{
-            service.saveStudent("1", "Sergiu", 939);
+            service.saveStudent("1", "Sergiu", 938);
         }
         catch (ValidationException e) {
             assertEquals("Grupa invalida! \n", e.getMessage());
