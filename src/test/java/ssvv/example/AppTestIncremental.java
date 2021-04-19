@@ -67,7 +67,7 @@ public class AppTestIncremental {
     }
 
     @Test
-    public void test_addStudent_null_id(){
+    public void test_incremental_addStudent_null_id(){
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
         try{
             service.saveStudent(null, "Sergiu", 666);

@@ -67,7 +67,7 @@ public class AppTestBigBang {
 
     //FROM BBT
     @Test
-    public void test_addStudent_null_id(){
+    public void test_bbi_addStudent_null_id(){
         assertEquals(0, service.findAllStudents().spliterator().getExactSizeIfKnown());
         try{
             service.saveStudent(null, "Tudor", 666);
@@ -80,7 +80,7 @@ public class AppTestBigBang {
     }
     //FROM WBT
     @Test
-    public void test_null_description_addAssignment() {
+    public void test_bbi_null_description_addAssignment() {
         assertEquals(0, service.findAllTeme().spliterator().getExactSizeIfKnown());
         try{
             service.saveTema("99", null, 8, 3);
@@ -92,7 +92,7 @@ public class AppTestBigBang {
     }
     //BIG BANG
     @Test
-    public void test_addGrade_nota_belowLowerBound() {
+    public void test_bbi_addGrade_nota_belowLowerBound() {
         assertEquals(0, service.findAllNote().spliterator().getExactSizeIfKnown());
         try {
             service.saveNota("1", "1", -1, 5, "none");
@@ -104,7 +104,7 @@ public class AppTestBigBang {
     }
 
     @Test
-    public void test_bigBang_Combined() {
+    public void test_bbi_bigBang_Combined() {
         assertEquals(0, service.findAllNote().spliterator().getExactSizeIfKnown());
         service.saveStudent("1", "Sergiu", 666);
         service.saveTema("1", "oTema", 5, 1);
