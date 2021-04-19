@@ -90,4 +90,142 @@ public class AppTestWBT
         assertEquals(0, service.findAllTeme().spliterator().getExactSizeIfKnown());
     }
 
+    @Test
+    public void test_null_id_addAssignment() {
+        try {
+            service.saveTema(null, "Descriere", 10, 8);
+        }
+        catch (ValidationException e) {
+            assertEquals("ID invalid! \n", e.getMessage());
+        }
+    }
+
+    @Test
+    public void test_empty_id_addAssignment() {
+        try {
+            service.saveTema("", "Descriere", 10, 8);
+        }
+        catch (ValidationException e) {
+            assertEquals("ID invalid! \n", e.getMessage());
+        }
+    }
+
+    @Test
+    public void test_deadline_underLowerBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 1, 5);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+    }
+    @Test
+    public void test_deadline_equalLowerBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 2, 2);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+    @Test
+    public void test_deadline_aboveLowerBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 3, 2);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+
+    @Test
+    public void test_deadline_underUpperBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 13, 2);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+    @Test
+    public void test_deadline_equalUpperBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 14, 2);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+    @Test
+    public void test_deadline_aboveUpperBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 15, 2);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(0, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+
+    @Test public void test_deadline_smaller_than_startLine() {
+        try {
+            service.saveTema("1", "lela", 2, 3);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(0, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+    @Test public void test_deadline_equal_to_startLine() {
+        try {
+            service.saveTema("1", "lela", 3, 3);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+    @Test public void test_deadline_bigger_to_startLine() {
+        try {
+            service.saveTema("1", "lela", 4, 3);
+        }
+        catch (ValidationException e) {
+            assertEquals("Deadline invalid! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+
+    @Test
+    public void test_startLine_underLowerBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 5, 1);
+        }
+        catch (ValidationException e) {
+            assertEquals("Data de primire invalida! \n", e.getMessage());
+        }
+    }
+    @Test
+    public void test_startLine_equalLowerBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 2, 2);
+        }
+        catch (ValidationException e) {
+            assertEquals("Data de primire invalida! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
+    @Test
+    public void test_startLine_aboveLowerBound_addAssignment() {
+        try {
+            service.saveTema("1", "lela", 3, 3);
+        }
+        catch (ValidationException e) {
+            assertEquals("Data de primire invalida! \n", e.getMessage());
+        }
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+    }
 }
