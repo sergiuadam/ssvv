@@ -92,5 +92,8 @@ public class AppTestIncremental {
         service.saveStudent("1", "Sergiu", 666);
         service.saveTema("1", "tema", 4, 3);
         service.saveNota("1", "1", 10, 3, "alles gut");
+        assertEquals(1, service.findAllStudents().spliterator().getExactSizeIfKnown());
+        assertEquals(1, service.findAllTeme().spliterator().getExactSizeIfKnown());
+        assertEquals(1, service.findAllNote().spliterator().getExactSizeIfKnown());
     }
 }
